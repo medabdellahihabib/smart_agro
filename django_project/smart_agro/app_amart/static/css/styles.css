@@ -1,0 +1,81 @@
+/* apps/app_amart/static/app_amart/css/styles.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.background-image {
+    background-image: url("/static/images/agr.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100%; /* Utilisez 100vh pour garantir que la section couvre la hauteur de l'écran */
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-message {
+    text-align: center;
+    color: #007bff; /* Couleur bleu clair */
+}
+
+.welcome-message h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInOut 4s ease-in-out infinite; /* Animation d'allumage et d'extinction */
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Animation de pulsation pour le texte h1 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+/* Ajoutez ces styles dans votre fichier CSS (styles.css) ou directement dans le balisage style de votre page */
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin-bottom: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-item img {
+    margin-right: 10px;
+    width: 10px; /* Ajustez la largeur de l'icône selon vos besoins */
+    height: 10px; /* Ajustez la hauteur de l'icône selon vos besoins */
+}
+
+.contact-form {
+    max-width: 600px;
+}

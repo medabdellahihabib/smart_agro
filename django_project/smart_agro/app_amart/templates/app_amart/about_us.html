@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}À Propos de Nous{% endblock %}
+
+{% block content %}
+
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h2>À Propos de Nous</h2>
+      <p>Découvrez qui nous sommes, notre mission, et la technologie innovante que nous utilisons dans le domaine de l'agriculture.</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-right">
+        {% comment %} <img src="{% static 'images/team.jpg' %}" class="img-fluid" alt="Notre Équipe"> {% endcomment %}
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="content">
+          <h3>Notre Mission</h3>
+          <p>
+            Nous sommes des pionniers dans le domaine de l'agriculture intelligente. Notre mission est de révolutionner l'agriculture en utilisant des technologies de pointe telles que l'Internet des objets (IoT) et l'apprentissage automatique pour optimiser les rendements et promouvoir une agriculture durable.
+          </p>
+
+          <h3>Notre Approche</h3>
+          <p>
+            Nous adoptons une approche holistique, combinant l'expertise en agriculture avec des compétences techniques avancées. Notre équipe  travaille de manière collaborative pour concevoir des solutions intelligentes, de la collecte de données sur le terrain à l'analyse avancée des données.
+          </p>
+
+          <h3>Innovation et Durabilité</h3>
+          <p>
+            L'innovation est au cœur de notre démarche. Nous croyons en des pratiques agricoles durables et respectueuses de l'environnement. En utilisant des capteurs intelligents, des analyses prédictives et des modèles de machine learning, nous visons à maximiser les rendements tout en minimisant l'impact environnemental.
+          </p>
+
+          <!-- Place pour la machine -->
+          {% load static %}           
+<h3>Notre Machine Intelligente</h3>
+<p>
+  Découvrez notre prototype intelligent de collecte d'informations sur l'agriculture. Équipée de capteurs d'humidité, de température et d'autres fonctionnalités avancées, cette machine révolutionne la manière dont les agriculteurs collectent et utilisent les données pour prendre des décisions éclairées.
+</p>
+<div class="row">
+  <div class="col-lg-6" data-aos="fade-right">
+    <img src="{% static 'images/Image1.png' %}" class="img-fluid" alt="Machine Photo 1">
+  </div>
+  <div class="col-lg-6" data-aos="fade-left">
+    <img src="{% static 'images/Image2.png' %}" class="img-fluid" alt="Machine Photo 2">
+  </div>
+</div>
+
+</section>
+
+{% endblock %}

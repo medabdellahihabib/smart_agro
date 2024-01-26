@@ -1,0 +1,23 @@
+<!-- app_amart/templates/app_amart/messages.html -->
+
+{% extends 'base.html' %}
+{% block title %}Boîte de réception{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Boîte de réception</h2>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>
+                        <strong>{{ message.nom }}</strong> - {{ message.email }}<br>
+                        {{ message.contenu }}<br>
+                        Envoyé le : {{ message.date_creation }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun message pour le moment.</p>
+        {% endif %}
+    </div>
+{% endblock content %}

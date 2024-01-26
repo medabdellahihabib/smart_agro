@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    {% block styles %}{% endblock %}
+
+</head>
+<body>
+
+    <!-- Your Navbar Code -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success p-3">
+        <div class="container-fluid">
+            <div id="logo">
+                <a class="navbar-brand" href="#">
+                    <span class="logo-light" style="color: #fff; font-weight: bold;">Smart</span>
+                    <span class="logo-dark" style="color: #333; font-weight: bold;">Agro</span>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link mx-3 active" aria-current="accueil" href="{% url 'accueil' %}">Accueil</a>
+                    </li>   {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'contact' %}">contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'messages' %}">messages</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    <!-- Link Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
