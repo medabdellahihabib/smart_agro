@@ -4,7 +4,7 @@ from . import views
 from .views import contact_view,contact_submit_view,messages_view
 
 urlpatterns = [
-    path('accueil/', views.accueil, name='accueil'),
+    path('', views.accueil, name='accueil'),
     path('services/',views.services,name='services'),
     path('about-us/', views.about_us, name='about_us'),
     
