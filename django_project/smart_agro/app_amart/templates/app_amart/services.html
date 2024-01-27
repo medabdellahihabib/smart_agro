@@ -1,12 +1,22 @@
+
+
+
+
+
+
+
+<!-- app_amart/templates/app_amart/services.html -->
+
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Nos Services{% endblock %}
+
 {% block content %}
 <style>
-  /* Styles for the box class */
   .box {
-    background: #fff; /* Changement de la couleur du fond en blanc */
-    border: 1px solid #007bff; /* Maintien de la couleur bleue de la bordure */
+    background: #fff;
+    border: 1px solid #007bff;
     padding: 20px;
     border-radius: 15px;
     transition: transform 0.3s ease;
@@ -14,10 +24,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    color: #000; /* Changement de la couleur du texte en noir */
+    color: #000;
   }
 
-  /* Style for the decorative border */
   .box:before {
     content: '';
     position: absolute;
@@ -25,25 +34,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid #007bff; /* Maintien de la couleur bleue de la bordure */
+    border: 2px solid #007bff;
     border-radius: 15px;
     box-sizing: border-box;
     z-index: -1;
   }
 
-  /* Style for the hover effect */
   .box:hover {
     transform: scale(1.05);
   }
 
-  /* Styles for the icon class */
   .icon {
-    width: 30px; /* Changement de la taille des icônes à 30px */
-    height: 30px; /* Changement de la taille des icônes à 30px */
+    width: 30px;
+    height: 30px;
     margin-bottom: 15px;
   }
 
-  /* Styles for the title and description class */
   .title {
     font-size: 18px;
     margin-top: 10px;
@@ -54,90 +60,59 @@
     margin-top: 5px;
   }
 
-  
-    .container-max-width {
-        max-width: 30000px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-
-
-
+  .container-max-width {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
 
-<div class="search container w-60 pb-3 pt-4">
-  <div class="text-center">
-    <div class="form-outline">
-      <div id="tt">
-        <img src="{% static 'images/plant.jpg' %}" width="220" height="90" alt="" loading="lazy">
+<div class="container-max-width mt-4">
+  <h2>Nos Services</h2>
+  <p>
+    Nous sommes des innovateurs dans le domaine de l'agriculture, utilisant des technologies avancées pour résoudre des problèmes majeurs du secteur. Découvrez nos services ci-dessous :
+  </p>
+
+  <div class="row gy-4">
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="box">
+        <img src="{% static 'images/ser1.png' %}" class="img-fluid icon" alt="Capteurs agricoles">
+        <h4 class="title"><a href="#">Collecte intelligente de données</a></h4>
+        <p class="description">
+          Un prototype intelligent de collecte de données agricoles avec des capteurs d'humidité, de température, une pelle à terre, un outil d'arrosage, etc.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+      <div class="box">
+        <img src="{% static 'images/ser2.png' %}" alt="Plateforme de traitement des données" class="img-fluid icon">
+        <h4 class="title"><a href="#">Plateforme d'analyse des données</a></h4>
+        <p class="description">
+          Création d’une plateforme pour la réception, le traitement et l'analyse des données agricoles collectées en temps réel.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="box">
+        <img src="{% static 'images/ser3.png' %}" alt="Machine Learning" class="img-fluid icon">
+        <h4 class="title"><a href="#">Prédiction avec Machine Learning</a></h4>
+        <p class="description">
+          Utilisation de l'apprentissage automatique pour prédire le choix de culture le plus bénéfique en fonction des conditions spécifiques du sol.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+      <div class="box">
+        <img src="{% static 'images/ser4.jpg' %}" alt="Connéctivité IoT" class="img-fluid icon">
+        <h4 class="title"><a href="#">Connéctivité IoT</a></h4>
+        <p class="description">
+          Utilisation de la connectivité IoT pour recueillir les informations agricoles collectées en temps réel.
+        </p>
       </div>
     </div>
   </div>
-
-
-
-
-<!-- ======= Services Section ======= -->
-<section id="services">
-    <div class="container" data-aos="fade-up">
-      <div class="section-header">
-        <div class="row gy-4">
-  
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="box">
-              {% comment %} <img src="{% static 'images/indice.png' %}" class="img-fluid icon" alt="Calcul de l'INPC"> {% endcomment %}
-              <h4 class="title"><a href="#">Titre </a></h4>
-              <p class="description">
-                Description 
-              </p>
-            </div>
-          </div>
-  
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              {% comment %} <img src="{% static 'images/evolution.png' %}" alt="Graphes et distribution" class="img-fluid icon"> {% endcomment %}
-              <h4 class="title"><a href="#">Titre </a></h4>
-              <p class="description">
-                Description 
-              </p>
-            </div>
-          </div>
-  
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              {% comment %} <img src="{% static 'images/predictive.png' %}" alt="Modèles de machine learning" class="img-fluid icon"> {% endcomment %}
-              <h4 class="title"><a href="#">Titre</a></h4>
-              <p class="description">
-                Description
-              </p>
-            </div>
-          </div>
-  
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              {% comment %} <img src="{% static 'images/import_export.png' %}" alt="Importation et exportation des données" class="img-fluid icon"> {% endcomment %}
-              <h4 class="title"><a href="#">Titre</a></h4>
-              <p class="description">
-                Description
-              </p>
-            </div>
-          </div>
-  
-        </div>
-      </div>
-    </div>
-  </section>
-  </div>
-  
-  <script>
-    window.onload = function() {
-      document.documentElement.style.height = '100%';
-      document.body.style.height = '100%';
-    };
-  </script>
-  
-  {% endblock content %}
-  
-  
+</div>
+{% endblock %}
