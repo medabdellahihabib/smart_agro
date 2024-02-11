@@ -1,0 +1,80 @@
+{% extends "base2.html" %}
+
+
+
+
+
+
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% load static %} <!-- Add this line to load static files template tags -->
+
+    <style>
+        body {
+            background-image: url("{% static 'images/login.jpg' %}");
+            background-size: cover;
+            color: #fff;  /* Text color for the body */
+        }
+
+        h1 {
+            color: #fff;  /* Heading text color */
+        }
+
+        p {
+            color: #fff;  /* Paragraph text color */
+        }
+
+        form {
+            color: #fff;  /* Form text color */
+        }
+
+        input[type="submit"] {
+            color: #fff;  /* Submit button text color */
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #222;  /* Dark background color */
+            color: #fff;  /* Light text color for dark background */
+        }
+
+        body.dark-mode h1,
+        body.dark-mode p,
+        body.dark-mode form,
+        body.dark-mode input[type="submit"] {
+            color: #fff;  /* Light text color for dark background */
+        }
+    </style>
+
+    <script>
+        // JavaScript to toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+    <div class="login-form">
+        <h1>Login</h1>
+        {% if form.errors %}
+            <p>Please, check your username and password.</p>
+        {% else %}
+            <p>
+                Please, use the following form to login If you don't have an account
+               <a href="{% url 'register' %}">register here</a>.</p> 
+            </p>
+        {% endif %}
+        
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="Log-in" />
+            </p>
+        </form>
+        
+    </div>
+{% endblock %}

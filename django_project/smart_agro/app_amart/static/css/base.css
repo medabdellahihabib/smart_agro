@@ -1,0 +1,159 @@
+/* Import Google Fonts */
+@import url(//fonts.googleapis.com/css?family=Muli);
+
+/* Basic CSS */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Muli', sans-serif;
+    line-height: 1.8;
+    color: #026efd;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #026efd;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Muli', sans-serif;
+    font-weight: normal;
+    border-bottom: 1px solid #bbb;
+    padding: 0 0 10px 0;
+    margin: 10px 0 20px 0;
+}
+
+/* Additional Styles */
+h2 {
+    margin: 30px 0 20px;
+    line-height: 1.5;
+}
+
+/* Header */
+#header ul.menu li.selected a,
+#header ul.menu li.selected a:hover {
+    color: #026efd;
+    font-weight: bold;
+}
+
+#header a {
+    color: #f3f7cc;
+}
+
+#header a:hover {
+    color: #fff;
+}
+
+#header .user {
+    float: right;
+    padding-top: 4px;
+}
+
+/* Content */
+#content {
+    padding: 30px 100px;
+}
+
+/* Forms */
+form {
+    overflow: auto;
+}
+
+form p {
+    width: 100%;
+    overflow: auto;
+}
+
+label {
+    float: left;
+    clear: both;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+input, textarea {
+    clear: both;
+    margin: 0 15px 10px;
+    background: #efefef;
+    border: 0;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+input[type=submit],
+a.button {
+    font-weight: bold;
+    background: #826efd;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Error List */
+.errorlist {
+    color: #cc0033;
+    float: left;
+    clear: both;
+    padding-left: 10px;
+}
+
+/* Help Text */
+helptext {
+    margin: 0 0 20px 0;
+    color: #aaa;
+    clear: both;
+    float: left;
+    font-size: 13px;
+}
+
+/* Messages */
+ul.messages {
+    margin: 10px 100px;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.messages li.success,
+ul.messages li.warning,
+ul.messages li.error,
+ul.messages li.info {
+    margin: 0;
+    padding: 14px 20px;
+    list-style: none;
+    color: #fff;
+}
+
+ul.messages li.success {
+    background: #81ce81;
+    color: #bacbe;
+}
+
+ul.messages li.error {
+    background: #a30029;
+    color: #e98280;
+}
+
+ul.messages li.info {
+    background: #faffae;
+    color: #69664e;
+}
+
+ul.messages li.warning {
+    background: #de9484;
+    color: #f48000;
+}
+
+ul.messages li a.close {
+    margin: 0;
+    float: right;
+    opacity: 1;
+    border: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* Login Form */
+.login-form {
+    float: left;
+}

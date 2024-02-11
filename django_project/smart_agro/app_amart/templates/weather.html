@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Weather Information{% endblock %}
+.weather-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-form {
+    margin-bottom: 20px;
+}
+
+.city-select, .get-weather-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.get-weather-button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.weather-info {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-info-item {
+    margin: 5px 0;
+}
+
+.no-data-message {
+    font-style: italic;
+    color: #888;
+}
+
+{% block content %}
+    <div class="weather-container">
+        <h1>Weather Information</h1>
+        
+        <form method="post" class="weather-form">
+            {% csrf_token %}
+            <label for="city">Select a city:</label>
+            <select name="city" id="city" class="city-select">
+                {% for city in cities %}
+                    <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="get-weather-button">Get Weather</button>
+        </form>
+
+        {% if weather_data %}
+            <div class="weather-info">
+                <h2>Weather for {{ selected_city }}</h2> 
+                <p class="weather-info-item">Weather: {{ weather_data.weather.0.main }}</p>
+                <p class="weather-info-item">Visibility: {{ weather_data.visibility }} meters</p>
+                <p class="weather-info-item">Temperature: {{ weather_data.main.temp }}°C</p>
+                <p class="weather-info-item">Minimum Temperature: {{ weather_data.main.temp_min }}°C</p>
+                <p class="weather-info-item">Maximum Temperature: {{ weather_data.main.temp_max }}°C</p>
+                <p class="weather-info-item">Pressure: {{ weather_data.main.pressure }} hPa</p>
+                <p class="weather-info-item">Humidity: {{ weather_data.main.humidity }}%</p>
+                <p class="weather-info-item">Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+                <p class="weather-info-item">Wind Degree: {{ weather_data.wind.deg }}°</p>
+            </div>
+        {% else %}
+            <p class="no-data-message">No weather data available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

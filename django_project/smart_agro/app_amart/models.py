@@ -11,3 +11,59 @@ class Message(models.Model):
     
     
 
+
+# prediction/models.py
+
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import RandomForestClassifier
+
+crop_dict = {
+    'Riz': 1,
+    'Maïs': 2,
+    'Haricots papillon': 3,
+    'Haricot mungo': 4,
+    'Haricot noir': 5,
+    'Lentille': 6,
+    'Banane': 7,
+    'Mangue': 8,
+    'Raisins': 9,
+    'Pastèque': 10,
+    'Melon miel': 11,
+    'Pomme': 12,
+    'Orange': 13,
+    'Papaye': 14,
+    'Café': 15
+}
+
+class CropModel:
+    def __init__(self):
+        self.rfc = RandomForestClassifier()
+        self.ms = MinMaxScaler()
+
+        # Load your CSV data or use your existing DataFrame
+        df = pd.read_csv(r'C:\Users\Dell\Desktop\Crop_recommendation_filtered_filtered.csv')
+
+        df['crop_num'] = df['label'].map(crop_dict)
+
+        X = df.drop(['crop_num', 'label'], axis=1)
+        y = df['crop_num']
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        self.X_train_scaled = self.ms.fit_transform(X_train)
+        self.X_test_scaled = self.ms.transform(X_test)
+
+        self.rfc.fit(self.X_train_scaled, y_train)
+
+    def predict_crop(self, N, P, k, temperature, humidity, ph, rainfall):
+        features = np.array([[N, P, k, temperature, humidity, ph, rainfall]])
+        transformed_features = self.ms.transform(features)
+        prediction = self.rfc.predict(transformed_features)
+
+        return prediction[0]
+
+
+

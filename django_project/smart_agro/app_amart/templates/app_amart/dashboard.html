@@ -1,0 +1,10 @@
+{% comment %} {% extends "base2.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <h1></h1>
+    <p>Hello, {{ request.user.username }}</p>
+    <p>Welcome to your page</p>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %} {% endcomment %}
