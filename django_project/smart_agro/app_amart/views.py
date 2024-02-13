@@ -155,8 +155,6 @@ class CustomLogoutView(LogoutView):
 
 
 
-# prediction/views.py
-
 from django.shortcuts import render
 from .models import CropModel
 from .forms import CropPredictionForm
@@ -178,7 +176,6 @@ def predict_crop(request):
 
             result_label = model.predict_crop(nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall)
             
-            # Map the numeric label to the corresponding crop name
             crop_dict = {
                 1: 'Riz',
                 2: 'Maïs',
@@ -198,12 +195,20 @@ def predict_crop(request):
             }
             
             result_crop = crop_dict.get(result_label, "Unknown Crop")
+            image_path = f"images/{result_label}.jpeg"  
 
-            return render(request, 'app_amart/predict.html', {'result': (result_label, result_crop), 'form': form})
+            return render(request, 'app_amart/predict.html', {'result': (result_label, result_crop), 'image_path': image_path, 'form': form})
     else:
         form = CropPredictionForm()
 
     return render(request, 'app_amart/predict.html', {'form': form})
+
+
+
+
+
+
+
 
 
 from django.shortcuts import render

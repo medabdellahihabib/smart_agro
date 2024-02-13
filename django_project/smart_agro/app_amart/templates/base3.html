@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
 
-    <!-- Link Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css"> 
@@ -20,7 +19,7 @@
 
     <style>
         .result-text {
-            font-size: 20px; /* Augmente la taille de la police */
+            font-size: 150px; /* Augmente la taille de la police */
             color: #333; /* Change la couleur du texte */
             background-color: #f8f9fa; /* Ajoute un fond de couleur pour améliorer la visibilité */
             padding: 10px; /* Ajoute un espace autour du texte pour une meilleure lisibilité */
@@ -29,8 +28,7 @@
 
 
 
-<div class="site-header">
-    <!-- Your Navbar Code -->
+<div class="">
     <nav class="navbar navbar-expand-lg navbar-light bg-success p-3">
         <div class="container-fluid">
             <div id="logo">
@@ -60,8 +58,11 @@
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'predict_crop' %}">Crop Recommendation</a>
                     </li>
-                    <li class="nav-item">
+                    {% comment %} <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'weather' %}">Weather</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'home' %}">weather</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'logout' %}">Logout</a>
@@ -72,6 +73,20 @@
     </nav>
 </div>
 
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="#" class="subscribe-form">
+                </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <!-- Additional Footer Content Here -->
+            </div>
+        </div>
+    </div>
+    <p class="colophon"></p>
+</footer>
 <div class="hero" data-bg-image="{% static 'images/mmm.jpg' %}">
     <div class="container">
         <form action="{% url 'result' %}" class="find-location" method="post">
@@ -92,16 +107,14 @@
         <div class="row">
             <div class="col-md-8">
                 <form action="#" class="subscribe-form">
-                    <!-- Subscription Form Content Here -->
                 </form>
             </div>
             <div class="col-md-3 col-md-offset-1">
-                <!-- Additional Footer Content Here -->
             </div>
         </div>
     </div>
     <p class="colophon"></p>
-</footer> <!-- .site-footer -->
+</footer>
 
 <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
 <script src="{% static 'js/plugins.js' %}"></script>
