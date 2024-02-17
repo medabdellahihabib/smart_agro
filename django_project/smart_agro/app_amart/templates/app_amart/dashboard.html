@@ -8,3 +8,106 @@
     <p>Welcome to your page</p>
     <a href="{% url 'logout' %}">Logout</a>
 {% endblock %} {% endcomment %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre titre ici</title>
+    <!-- Ajoutez le lien vers la feuille de style Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Mon Application</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- Ajoutez d'autres éléments de menu si nécessaire -->
+            </ul>
+            <div class="profile-info">
+                <div class="profile-circle bg-primary text-white">{{ user.username|first|upper }}</div>
+                <div class="profile-details ml-3">
+                    <p class="mb-0">{{ user.username }}</p>
+                    <p class="mb-0">{{ user.email }}</p>
+                </div>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'password_change' %}">Changer le mot de passe</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Votre contenu HTML va ici -->
+
+    <!-- Ajoutez les scripts Bootstrap à la fin du fichier -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Ajoutez le lien vers la feuille de style Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Personnalisation des styles */
+        .profile-circle {
+            width: 80px; /* diamètre de 40px */
+            height: 80px; /* diamètre de 40px */
+            border-radius: 50%; /* forme de cercle */
+            background-color: #007bff; /* couleur de fond bleue */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px; /* taille de la police */
+            color: #ffffff; /* couleur du texte blanc */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column">
+        <a class="navbar-brand mb-3" href="#"></a>
+        <div class="profile-info mb-3">
+            <div class="profile-circle">{{ user.username|first|upper }}</div>
+            <div class="profile-details mt-2">
+                <p class="mb-0">{{ user.username }}</p>
+                <p class="mb-0">{{ user.email }}</p>
+            </div>
+        </div>
+        <ul class="navbar-nav mb-3">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'password_change' %}">Changer le mot de passe</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Votre contenu HTML va ici -->
+
+    <!-- Ajoutez les scripts Bootstrap à la fin du fichier -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,14 @@
+<!-- Navbar -->
+<nav>
+    <div class="profile-info">
+        <div class="profile-circle">{{ user.username|first|upper }}</div>
+        <div class="profile-details">
+            <p>{{ user.username }}</p>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+    <ul>
+        <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+        <li><a href="{% url 'password_change' %}">Changer le mot de passe</a></li>
+    </ul>
+</nav>

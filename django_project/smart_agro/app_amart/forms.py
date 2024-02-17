@@ -44,4 +44,15 @@ class CropPredictionForm(forms.Form):
     Humidity = forms.FloatField(label='Humidity', widget=forms.NumberInput(attrs={'step': '0.01'}))
     Ph = forms.FloatField(label='pH', widget=forms.NumberInput(attrs={'step': '0.01'}))
     Rainfall = forms.FloatField(label='Rainfall', widget=forms.NumberInput(attrs={'step': '0.01'}))
-    
+
+
+
+from django import forms
+from .models import CropProduction  # Assurez-vous d'importer votre modèle
+
+class CropProductionForm(forms.ModelForm):
+    class Meta:
+        model = CropProduction
+        fields = ['district', 'crop', 'season', 'area', 'yield1']
+
+

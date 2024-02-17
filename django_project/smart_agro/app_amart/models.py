@@ -67,3 +67,11 @@ class CropModel:
 
 
 
+from django.db import models
+
+class CropProduction(models.Model):
+    district = models.CharField(max_length=100)
+    crop = models.CharField(max_length=100)
+    season = models.CharField(max_length=100)
+    area = models.FloatField()
+    yield1 = models.FloatField()

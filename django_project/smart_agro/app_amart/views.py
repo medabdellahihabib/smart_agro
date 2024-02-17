@@ -331,3 +331,127 @@ def result(request):
 #         'sl': sl
 #     }
 #     return render(request, 'weather_api/base.html', context)
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard1(request):
+    return render(request, "app_amart/dashboard.html", {'section': 'dashboard1', 'user': request.user})
+
+""" from django.shortcuts import render
+import pickle
+import numpy as np
+from .forms import CropProductionForm
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
+def predict_prod(request):
+    if request.method == 'POST':
+        form = CropProductionForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            model = pickle.load(open("model.pkl", "rb"))
+            result = model.predict(np.array([data['district'], data['crop'], data['season'], data['area'], data['yield1']]).reshape(1, -1))
+            result = float(result[0])
+            return render(request, 'app_amart/forecast.html', {'result': result})
+        else:
+            print(form.errors)
+    else:
+        form = CropProductionForm()
+    return render(request, 'app_amart/index.html', {'form': form}) """ 
+
+
+# views.py
+
+from django.shortcuts import render
+import pickle
+import numpy as np
+
+# Charger le modèle
+model = pickle.load(open("model.pkl", "rb"))
+label_encoding_info = {
+    "District": {
+        "Jodhpur": 5,
+        "Kota": 6,
+        "Jaipur": 4,
+        "Hanumangarh": 3,
+        "Sri Ganganagar": 8,
+        "Udaipur": 9,
+        "Bhilwara": 2,
+        "Alwar": 1,
+        "Nagaur": 7,
+        "Ajmer": 0,
+    },
+    "Crop": {
+        "Wheat": 22,
+        "Gram": 10,
+        "Coriander": 4,
+        "Citrus": 3,
+        "Cotton": 5,
+        "Guava": 11,
+        "Garlic": 9,
+        "Mustard": 14,
+        "Fenugreek": 8,
+        "Maize": 12,
+        "Fennel": 7,
+        "Bajra": 0,
+        "Oilseeds": 15,
+        "Opium": 17,
+        "Pomegranate": 18,
+        "Cumin": 6,
+        "Chilli": 2,
+        "Tomato": 21,
+        "Sugarcane": 20,
+        "Barley": 1,
+        "Onion": 16,
+        "Pulses": 19,
+        "Mango": 13,
+    },
+    "Season": {"Kharif": 0, "Rabi": 1},
+}
+
+def index(request):
+    return render(request, "app_amart/index.html")
+
+def predict_prod(request):
+    if request.method == "POST":
+        user_input = ["District", "Crop", "Season", "Area", "Yield"]
+        decoded_input = {}
+
+        for i in user_input[:3]:
+            encoding_map = label_encoding_info[i]
+            decoded_value = encoding_map[request.POST.get(i)]
+            decoded_input[i] = decoded_value
+
+        data = [decoded_input[i] for i in user_input[:3]]
+        data.extend(float(request.POST.get(i)) for i in user_input[3:])
+
+        district, crop, season = (
+            request.POST.get("District"),
+            request.POST.get("Crop"),
+            request.POST.get("Season"),
+        )
+        area, yield1 = float(request.POST.get("Area")), float(request.POST.get("Yield"))
+
+        result = model.predict(np.array(data).reshape(1, -1))
+
+        result = float(result[0])
+        return render(
+            request,
+            "app_amart/forecast.html",
+            {
+                "district": district,
+                "crop": crop,
+                "season": season,
+                "area": area,
+                "yield1": yield1,
+                "result": result,
+            },
+        )
+
+def test_again(request):
+    return render(request, "app_amart/index.html")
+
+

@@ -1,7 +1,7 @@
 # apps/app_amart/urls.py
 from django.urls import path
 from . import views
-from .views import contact_view,contact_submit_view,messages_view,CustomLogoutView,predict_crop,weather_view
+from .views import contact_view,contact_submit_view,dashboard1,messages_view,predict_prod,CustomLogoutView,predict_crop,weather_view
 from django.contrib.auth import views as auth_views
 
 
@@ -15,17 +15,21 @@ urlpatterns = [
     path('services/',views.services,name='services'),
     path('about-us/', views.about_us, name='about_us'),
     
+    path('accuei/', dashboard1, name='dashboard1'),
+    
     path('contact/', contact_view, name='contact'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
     path('messages/', messages_view, name='messages'),
     
-    path('predict/', predict_crop, name='predict_crop'),
+    path('predict1/', predict_crop, name='predict_crop'),
     
     path('accueil/', views.dashboard, name='dashboard'),
     path('', auth_views.LoginView.as_view(template_name='app_amart/login.html'), name='login'),
 
     
     path('logout/', CustomLogoutView.as_view(), name='logout'),
+    
+ 
     
     
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
@@ -37,6 +41,14 @@ urlpatterns = [
     
     path('weather1/', views.index, name="home"),
     path("result", views.result, name="result"),
+    
+    
+    
+    
+    path("prediction", views.index, name="index"),
+    path("predict/", views.predict_prod, name="predict_prod"),
+    
+    
     
     
     
