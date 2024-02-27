@@ -1,7 +1,7 @@
 # apps/app_amart/urls.py
 from django.urls import path
 from . import views
-from .views import contact_view,contact_submit_view,dashboard1,messages_view,predict_prod,CustomLogoutView,predict_crop,weather_view
+from .views import contact_view,contact_submit_view,dashboard1,predict_prod,CustomLogoutView,predict_crop,weather_view
 from django.contrib.auth import views as auth_views
 
 
@@ -19,7 +19,7 @@ urlpatterns = [
     
     path('contact/', contact_view, name='contact'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
-    path('messages/', messages_view, name='messages'),
+    
     
     path('predict1/', predict_crop, name='predict_crop'),
     
@@ -45,11 +45,17 @@ urlpatterns = [
     
     
     
-    path("prediction", views.index, name="index"),
+    path("prediction", views.inde, name="index"),
     path("predict/", views.predict_prod, name="predict_prod"),
+   
     
     
-    
-    
-    
+    path('contact1/', views.contact_vie, name='contact1'),
 ]
+
+    
+    
+    
+    
+    
+

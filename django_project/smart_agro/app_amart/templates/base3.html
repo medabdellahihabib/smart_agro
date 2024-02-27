@@ -14,6 +14,8 @@
 
     {% block styles %}{% endblock %}
 
+    
+
 </head>
 <body>
 
@@ -24,9 +26,11 @@
             background-color: #f8f9fa; /* Ajoute un fond de couleur pour améliorer la visibilité */
             padding: 10px; /* Ajoute un espace autour du texte pour une meilleure lisibilité */
         }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* Set text color to white */
+            font-size: 18px; /* Increase font size */
+        }
     </style>
-
-
 
 <div class="">
     <nav class="navbar navbar-expand-lg navbar-light bg-success p-3">
@@ -52,15 +56,17 @@
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'contact' %}">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'messages' %}">Messages</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'predict_crop' %}">Crop Recommendation</a>
                     </li>
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'weather' %}">Weather</a>
-                    </li> {% endcomment %}
+                    
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="{% url 'index' %}">crop production</a>
+                    </li>
+
+
+
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="{% url 'home' %}">weather</a>
                     </li>
@@ -71,7 +77,7 @@
             </div>
         </div>
     </nav>
-</div>
+</div> 
 
 <footer class="site-footer">
     <div class="container">
@@ -87,7 +93,7 @@
     </div>
     <p class="colophon"></p>
 </footer>
-<div class="hero" data-bg-image="{% static 'images/mee.jpg' %}">
+<div class="hero" data-bg-image="{% static 'images/banner.png' %}">
     <div class="container">
         <form action="{% url 'result' %}" class="find-location" method="post">
             {% csrf_token %}
@@ -122,5 +128,3 @@
 
 </body>
 </html> 
-
-

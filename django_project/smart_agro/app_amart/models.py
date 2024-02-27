@@ -75,3 +75,4 @@ class CropProduction(models.Model):
     season = models.CharField(max_length=100)
     area = models.FloatField()
     yield1 = models.FloatField()
+

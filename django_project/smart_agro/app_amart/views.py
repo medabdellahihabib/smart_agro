@@ -37,12 +37,6 @@ def contact_submit_view(request):
 
 
 
-from django.shortcuts import render
-from .models import Message
-
-def messages_view(request):
-    messages = Message.objects.all()
-    return render(request, 'app_amart/messages.html', {'messages': messages})
 
 
 # # app_amart/views.py
@@ -197,16 +191,11 @@ def predict_crop(request):
             result_crop = crop_dict.get(result_label, "Unknown Crop")
             image_path = f"images/{result_label}.jpeg"  
 
-            return render(request, 'app_amart/predict.html', {'result': (result_label, result_crop), 'image_path': image_path, 'form': form})
+            return render(request, 'app_amart/nn.html', {'result': (result_label, result_crop), 'image_path': image_path, 'form': form})
     else:
         form = CropPredictionForm()
 
-    return render(request, 'app_amart/predict.html', {'form': form})
-
-
-
-
-
+    return render(request, 'app_amart/nn.html', {'form': form})
 
 
 
@@ -339,8 +328,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def dashboard1(request):
     return render(request, "app_amart/dashboard.html", {'section': 'dashboard1', 'user': request.user})
-
-""" from django.shortcuts import render
+""" 
+from django.shortcuts import render
 import pickle
 import numpy as np
 from .forms import CropProductionForm
@@ -360,7 +349,7 @@ def predict_prod(request):
             print(form.errors)
     else:
         form = CropProductionForm()
-    return render(request, 'app_amart/index.html', {'form': form}) """ 
+    return render(request, 'app_amart/index.html', {'form': form})   """
 
 
 # views.py
@@ -412,7 +401,7 @@ label_encoding_info = {
     "Season": {"Kharif": 0, "Rabi": 1},
 }
 
-def index(request):
+def inde(request):
     return render(request, "app_amart/index.html")
 
 def predict_prod(request):
@@ -450,8 +439,13 @@ def predict_prod(request):
                 "result": result,
             },
         )
+        
 
 def test_again(request):
     return render(request, "app_amart/index.html")
 
 
+from django.shortcuts import render
+
+def contact_vie(request):
+    return render(request, 'contact1.html')

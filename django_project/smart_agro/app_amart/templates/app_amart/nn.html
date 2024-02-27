@@ -1,0 +1,202 @@
+
+{% comment %} {% load static %}
+
+{% block body %}
+
+<style>
+    .mt-0 {
+        margin-top: 50px !important;
+    }
+
+    .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/static/images/l.jpeg");
+        height: 100vh; /* Remplacez 100% par 100vh pour qu'elle occupe toute la hauteur de l'écran */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: space-between; /* Pour séparer les deux colonnes */
+        align-items: center; /* Pour centrer verticalement le contenu */
+    }
+
+    .form-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        width: 40%; /* Largeur de la colonne du formulaire */
+    }
+
+    .form-overlay form {
+        margin-bottom: 0; /* Pour enlever l'espace entre le formulaire et le bas */
+    }
+
+    .form-overlay label {
+        margin-bottom: 5px; /* Pour espacer un peu les labels */
+    }
+
+    .form-overlay input {
+        margin-bottom: 10px; /* Pour espacer un peu les champs de saisie */
+    }
+
+    .prediction-image {
+        width: 50%; /* Largeur de la colonne de l'image de prédiction */
+        padding: 0 20px; /* Espacement intérieur pour l'image */
+        margin-right: 20px; /* Décalage vers la droite */
+    }
+</style>
+
+<!-- hero section -->
+<div class="hero-image">
+    <div class="form-overlay">
+        <form action="{% url 'predict_crop' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="Nitrogen" class="text-white">Nitrogen:</label>
+                <input type="text" class="form-control" id="Nitrogen" name="Nitrogen">
+            </div>
+            <div class="form-group">
+                <label for="Phosphorus" class="text-white">Phosphorus:</label>
+                <input type="text" class="form-control" id="Phosphorus" name="Phosphorus">
+            </div>
+            <div class="form-group">
+                <label for="Potassium" class="text-white">Potassium:</label>
+                <input type="text" class="form-control" id="Potassium" name="Potassium">
+            </div>
+            <div class="form-group">
+                <label for="Temperature" class="text-white">Temperature:</label>
+                <input type="text" class="form-control" id="Temperature" name="Temperature">
+            </div>
+            <div class="form-group">
+                <label for="Humidity" class="text-white">Humidity:</label>
+                <input type="text" class="form-control" id="Humidity" name="Humidity">
+            </div>
+            <div class="form-group">
+                <label for="Ph" class="text-white">pH:</label>
+                <input type="text" class="form-control" id="Ph" name="Ph">
+            </div>
+            <div class="form-group">
+                <label for="Rainfall" class="text-white">Rainfall:</label>
+                <input type="text" class="form-control" id="Rainfall" name="Rainfall">
+            </div>
+            <button type="submit" class="btn btn-success btn-lg mt-3 custom-button">Obtenir une recommandation</button>
+        </form>
+    </div>
+
+    <div class="prediction-image">
+        {% if result %}
+        <img src="{% static image_path %}" class="img-fluid" alt="...">
+        <div class="card bg-dark mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-white">La culture recommandée :</h5>
+                <p class="card-text text-white">Culture recommandée: {{ result.0 }}<br>{{ result.1 }} C'est une meilleure culture à cultiver</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- /hero section -->
+
+{% endblock %} {% endcomment %}
+
+
+{% load static %}
+{% block body %}
+
+<style>
+    .mt-0 {
+        margin-top: 50px !important;
+    }
+
+    .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/static/images/n.jpeg");
+        height: 100vh; /* Remplacez 100% par 100vh pour qu'elle occupe toute la hauteur de l'écran */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: space-between; /* Pour séparer les deux colonnes */
+        align-items: center; /* Pour centrer verticalement le contenu */
+    }
+
+    .form-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        width: 40%; /* Largeur de la colonne du formulaire */
+    }
+
+    .form-overlay form {
+        margin-bottom: 0; /* Pour enlever l'espace entre le formulaire et le bas */
+    }
+
+    .form-overlay label {
+        margin-bottom: 5px; /* Pour espacer un peu les labels */
+    }
+
+    .form-overlay input {
+        margin-bottom: 10px; /* Pour espacer un peu les champs de saisie */
+    }
+
+    .prediction-image {
+        width: 50%; /* Largeur de la colonne de l'image de prédiction */
+        padding: 0 20px; /* Espacement intérieur pour l'image */
+        margin-right: 20px; /* Décalage vers la droite */
+    }
+</style>
+
+<!-- hero section -->
+<div class="hero-image">
+    <div class="form-overlay">
+        <form action="{% url 'predict_crop' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="Nitrogen" class="text-white">Nitrogen:</label>
+                <input type="text" class="form-control" id="Nitrogen" name="Nitrogen">
+            </div>
+            <div class="form-group">
+                <label for="Phosphorus" class="text-white">Phosphorus:</label>
+                <input type="text" class="form-control" id="Phosphorus" name="Phosphorus">
+            </div>
+            <div class="form-group">
+                <label for="Potassium" class="text-white">Potassium:</label>
+                <input type="text" class="form-control" id="Potassium" name="Potassium">
+            </div>
+            <div class="form-group">
+                <label for="Temperature" class="text-white">Temperature:</label>
+                <input type="text" class="form-control" id="Temperature" name="Temperature">
+            </div>
+            <div class="form-group">
+                <label for="Humidity" class="text-white">Humidity:</label>
+                <input type="text" class="form-control" id="Humidity" name="Humidity">
+            </div>
+            <div class="form-group">
+                <label for="Ph" class="text-white">pH:</label>
+                <input type="text" class="form-control" id="Ph" name="Ph">
+            </div>
+            <div class="form-group">
+                <label for="Rainfall" class="text-white">Rainfall:</label>
+                <input type="text" class="form-control" id="Rainfall" name="Rainfall">
+            </div>
+            <button type="submit" class="btn btn-success btn-lg mt-3 custom-button">Obtenir une recommandation</button>
+        </form>
+    </div>
+
+    <div class="prediction-image">
+        {% if result %}
+        <img src="{% static image_path %}" class="img-fluid" alt="...">
+        <div class="card bg-dark mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-white">La culture recommandée :</h5>
+                <p class="card-text text-white">Culture recommandée: {{ result.0 }}<br>{{ result.1 }} C'est une meilleure culture à cultiver</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- /hero section -->
+
+{% endblock %}
