@@ -17,6 +17,8 @@ urlpatterns = [
     
     path('accuei/', dashboard1, name='dashboard1'),
     
+    
+    
     path('contact/', contact_view, name='contact'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
     

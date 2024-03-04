@@ -140,11 +140,13 @@
                 <h4 style="color:#99ff99; font-size:20px; text-align:center;">{{ pesticide_text }}</h4>
                 <br>
             </div>
+
             <div>
-                <img src="{{ img1 }}" alt="Photo 1">
-                <img src="{{ img2 }}" alt="Photo 2">
-                <img src="{{ img3 }}" alt="Photo 3">
-            </div>
+            <img src="{% static 'test1/' %}{{ images.0 }}.jpeg" alt="">
+            <img src="{% static 'test1/' %}{{ images.1 }}.jpeg" alt="">
+            <img src="{% static 'test1/' %}{{ images.2 }}.jpeg" alt="">
+
+            </div> 
             
 
             

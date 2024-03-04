@@ -590,8 +590,15 @@ def predict(filename, model):
         prob_result.append((prob[i] * 100).round(2))
         class_result.append(dict_result[prob[i]])
     return class_result, prob_result
+def get_random_images(folder_path, num_images=3):
+    # Liste des noms de fichiers des images dans le dossier
+    image_files = os.listdir(folder_path)
 
-# Vue pour la page d'accueildef success(request):
+    # Sélectionnez 'num_images' images au hasard
+    random_images = random.sample(image_files, min(num_images, len(image_files)))
+
+    # Retourne les chemins complets des images sélectionnées
+    return [os.path.join(folder_path, img) for img in random_images]
 
 def success(request):
     error = ''
@@ -618,36 +625,6 @@ def success(request):
                     "prob3": prob_result[2],
                 }
 
-                chemin = r'C:\Users\Dell\Desktop\images'
-
-                if not os.path.exists(chemin):
-                    print("Le répertoire spécifié n'existe pas.")
-                    exit()
-
-                photos = []
-
-                for fichier in os.listdir(chemin):
-                    if fichier.lower().endswith((".jpg", ".jpeg", ".png")):
-                        photos.append(os.path.join(chemin, fichier))
-                    else:
-                        print(f"Ignoré : {fichier} n'est pas un fichier JPG, JPEG ou PNG.")
-
-                if not photos:
-                    print("Il n'y a pas de photos dans le répertoire spécifié.")
-                    exit()
-
-                photos_choisies = random.sample(photos, 3)
-
-                # Transmettre les chemins des trois photos au modèle
-                context = {
-                    'img1': photos_choisies[0],
-                    'img2': photos_choisies[1],
-                    'img3': photos_choisies[2],
-                }
-
-                # Sélectionner trois photos au hasard
-                return render(request, 'success.html', {'img': img, 'predictions': predictions, 'context': context})
-                
             except Exception as e:
                 print(str(e))
                 error = 'Cette image n\'est pas accessible ou n\'est pas un format valide'
@@ -668,14 +645,24 @@ def success(request):
                 class_result_lower = [class_name.lower() for class_name in class_result]
         # Find the index of the row where the class matches
                 row_index = (df.iloc[:, 0].str.lower() == class_result_lower[0]).idxmax()
+                
+                folder_path = 'C:/Users/Dell/Desktop/smart_agro/django_project/smart_agro/app_amart/static/test1/'
 
-        # Print the output message
+    # Obtenez trois images au hasard
+                random_images = get_random_images(folder_path)
+
+    # Imprime les noms de fichiers sans leurs extensions
+                l = [os.path.splitext(os.path.basename(img))[0] for img in random_images]
+
+        
                 pesticide_text = f"Common pesticides used for controlling {df.iloc[row_index, 0]} are {df.iloc[row_index, 1]}"
-                return render(request, 'success.html', {'img': filename, 'predictions': predictions, 'pesticide_text': pesticide_text})
+                return render(request, 'success.html', {'img': filename, 'images': l,'predictions': predictions, 'pesticide_text': pesticide_text})
         
             else:
                 error = "Veuillez télécharger uniquement des images aux formats jpg, jpeg ou png"
     return render(request, 'index.html', {'error': error})
+
+
 
 # Vue pour la webcam
 def cam(request):
@@ -848,3 +835,34 @@ def retrainer(request, path=DATASET):
     return render(request, 'retrain.html')  # Assurez-vous d'avoir un template retrain.html dans votre répertoire de templates
 
   
+  
+from django.shortcuts import render
+import os
+import random
+
+
+import os
+import random
+from django.shortcuts import render
+
+def get_random_images(folder_path, num_images=3):
+    # Liste des noms de fichiers des images dans le dossier
+    image_files = os.listdir(folder_path)
+
+    # Sélectionnez 'num_images' images au hasard
+    random_images = random.sample(image_files, min(num_images, len(image_files)))
+
+    # Retourne les chemins complets des images sélectionnées
+    return [os.path.join(folder_path, img) for img in random_images]
+
+def ma(request):
+    # Chemin vers le dossier contenant les images
+    folder_path = 'C:/Users/Dell/Desktop/smart_agro/django_project/smart_agro/app_amart/static/test1/'
+
+    # Obtenez trois images au hasard
+    random_images = get_random_images(folder_path)
+
+    # Imprime les noms de fichiers sans leurs extensions
+    l = [os.path.splitext(os.path.basename(img))[0] for img in random_images]
+
+    return render(request, 'votre_template.html', {'images': l})
