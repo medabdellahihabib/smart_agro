@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,121 +14,144 @@
     <!-- Link Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    {% block styles %}{% endblock %}
+    {% block styles %}
+    <style>
+        {% comment %} /* Existing styles */
+        .profile-circle {
+            width: 40px;
+            height: 0px;
+            border-radius: 60%;
+            background-color: #007bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 39px;
+            color: #ffffff !important;
+        } {% endcomment %}
 
+        /* New styles for navbar */
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* Set text color to white */
+             /* Increase font size */
+            transition: color 0.3s; /* Smooth color transition */
+        } 
+
+        
+        .profile-circle {
+            width: 45px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #343a40; /* Couleur de fond du cercle */
+            color: #fff; /* Couleur du texte à l'intérieur du cercle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        #profile-details-container {
+            position: absolute;
+            top: 50px; /* Ajustez la valeur en fonction de la hauteur de votre barre de navigation */
+            left: 10%; /* Ajustez la position horizontale selon vos besoins */
+            width: 80%; /* Ajustez la largeur du conteneur selon vos besoins */
+            background-color: #ffffff; /* Couleur de fond */
+            border: 1px solid #ccc; /* Bordure */
+            padding: 20px; /* Espacement intérieur */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre */
+            z-index: 999; /* Assurez-vous que le conteneur est au-dessus du reste du contenu */
+            display: none; /* Par défaut, le conteneur est caché */
+        }
+        
+
+    </style>
+    {% endblock %}
 </head>
-<style>
-    /* Existing styles */
-    .profile-circle {
-        width: 40px;
-        height: 0px;
-        border-radius: 60%;
-        background-color: #007bff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 39px;
-        color: #ffffff !important;
-    }
-
-    /* New styles for navbar */
-    .navbar-nav .nav-link {
-        color: #ffffff !important; /* Set text color to white */
-        font-size: 18px; /* Increase font size */
-    }
-</style>
 
 <body>
-    
 
-    <!-- Your Navbar Code -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-success p-3">
-        <div class="container-fluid">
-            <div id="logo">
-                <a class="navbar-brand" href="{% url 'accueil' %}">
-                    <span class="logo-light" style="color: #fff; font-weight: bold;">Smart</span>
-                    <span class="logo-dark" style="color: #333; font-weight: bold;">Agro</span>🌱
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!-- Your Navbar Code -->
+<nav class="navbar navbar-expand-lg navbar-light bg-success p-3">
+    <div class="container-fluid">
+        <div id="logo">
+            <a class="navbar-brand" href="{% url 'accueil' %}">
+                <span class="logo-light" style="color: #fff; font-weight: bold;">Smart</span>
+                <span class="logo-dark" style="color: #333; font-weight: bold;">Agro</span>🌱
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link mx-3 active" aria-current="accueil" href="{% url 'accueil' %}">Accueil</a>
-                    </li>   {% endcomment %}
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'services' %}">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'about_us' %}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'contact' %}">contact</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'predict_crop' %}">crop recommendation</a>
-                    </li>
-                    
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'index' %}">crop production</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'home' %}">weather</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'services' %}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'about_us' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'contact' %}">contact</a>
+                </li>
 
-    
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'predict_crop' %}">crop recommendation</a>
+                </li>
 
 
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'index' %}">crop production</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'hom' %}">contrôle des parasites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'home' %}">weather</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link mx-3" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                       
 
-                </ul>
-                    
-            </div>
-            
-            
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'logout' %}">Logout</a>
+                </li>
 
-            <div class="profile-info">
-                {% comment %} <div class="profile-circle">{{ user.username|first|upper }}</div> {% endcomment %}
-                <a class="navbar-brand mb-3" href="{% url 'accueil' %}">{{ user.username|first|upper }}
 
-                </a>   
-            </div>
-            
-            
-            
-
+            </ul>
 
         </div>
-    </nav>
-    
 
+ 
+        <li class="nav-item">
+            <div class="profile-info">
+                <a class="navbar-brand mb-3" href="{% url 'dashboard1' %}">
+                    <div class="profile-circle">{{ user.username|first|upper }}</div>
+                </a>
+            </div>
+        </li> 
 
-    <div class="container mt-4">
-        {% block content %}{% endblock %}
     </div>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+</nav>
+
+
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
-    <!-- Link Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Link Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    {% block scripts %}{% endblock %}
+{% block scripts %}{% endblock %}
+
+
 </body>
 </html>

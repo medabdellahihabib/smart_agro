@@ -236,6 +236,18 @@
         color: #ffffff !important; /* Set text color to white */
         font-size: 18px; /* Increase font size */
     }
+
+    .profile-circle {
+        width: 40px;
+        height: 22px;
+        border-radius: 50%;
+        background-color: #343a40; /* Couleur de fond du cercle */
+        color: #fff; /* Couleur du texte à l'intérieur du cercle */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-success fixed-top p-3">
@@ -269,11 +281,24 @@
                     <a class="nav-link mx-3" href="{% url 'index' %}">Crop Production</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'hom' %}">contrôle des parasites</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link mx-3" href="{% url 'home' %}">Weather</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mx-3" href="{% url 'logout' %}">Logout</a>
                 </li>
+
+                <li class="nav-item">
+                    <div class="profile-info">
+                        <a class="navbar-brand mb-3" href="{% url 'dashboard1' %}">
+                            <div class="profile-circle">{{ user.username|first|upper }}</div>
+                        </a>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>

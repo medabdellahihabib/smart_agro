@@ -51,6 +51,17 @@ urlpatterns = [
     
     
     path('contact1/', views.contact_vie, name='contact1'),
+    
+    
+    
+    path('retrainer/', views.retrainer, name='retrainer'),
+    path('stoptrainer/', views.stoptrainer, name='stoptrainer'),
+    path('hom/', views.hom, name='hom'),
+    path('success/', views.success, name='success'),
+    path('camera/', views.cam, name='cam'),
+    path('video_feed/', views.video_feed, name='video_feed'),
+    path('capture/', views.capture, name='capture'),
+    path('save/', views.save, name='save'),
 ]
 
     
