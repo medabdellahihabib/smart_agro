@@ -76,3 +76,9 @@ class CropProduction(models.Model):
     area = models.FloatField()
     yield1 = models.FloatField()
 
+
+
+
+
+
+

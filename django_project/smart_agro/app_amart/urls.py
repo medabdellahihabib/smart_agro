@@ -1,9 +1,9 @@
 # apps/app_amart/urls.py
 from django.urls import path
 from . import views
-from .views import contact_view,contact_submit_view,dashboard1,predict_prod,CustomLogoutView,predict_crop,weather_view
+from .views import contact_view,contact_submit_view,dashboard1,messages_view,predict_prod,CustomLogoutView,predict_crop,weather_view
 from django.contrib.auth import views as auth_views
-
+from . import views1
 
 
 
@@ -17,11 +17,9 @@ urlpatterns = [
     
     path('accuei/', dashboard1, name='dashboard1'),
     
-    
-    
     path('contact/', contact_view, name='contact'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
-    
+    path('messages/', messages_view, name='messages'),
     
     path('predict1/', predict_crop, name='predict_crop'),
     
@@ -47,28 +45,21 @@ urlpatterns = [
     
     
     
-    path("prediction", views.inde, name="index"),
-    path("predict/", views.predict_prod, name="predict_prod"),
-   
-    
-    
-    path('contact1/', views.contact_vie, name='contact1'),
+    path("prediction", views.index, name="index"),
+    path("predictt/", views.predict_prod, name="predict_prod"),
     
     
     
-    path('retrainer/', views.retrainer, name='retrainer'),
-    path('stoptrainer/', views.stoptrainer, name='stoptrainer'),
-    path('hom/', views.hom, name='hom'),
-    path('success/', views.success, name='success'),
-    path('camera/', views.cam, name='cam'),
-    path('video_feed/', views.video_feed, name='video_feed'),
-    path('capture/', views.capture, name='capture'),
-    path('save/', views.save, name='save'),
+    path('retrainer/', views1.retrainer, name='retrainer'),
+    path('stoptrainer/', views1.stoptrainer, name='stoptrainer'),
+    path('hom/', views1.hom, name='hom'),
+    path('success/', views1.success, name='success'),
+    path('camera/', views1.cam, name='cam'),
+    path('video_feed/', views1.video_feed, name='video_feed'),
+    path('capture/', views1.capture, name='capture'),
+    path('save/', views1.save, name='save'),
+    
+    
+    
+    
 ]
-
-    
-    
-    
-    
-    
-

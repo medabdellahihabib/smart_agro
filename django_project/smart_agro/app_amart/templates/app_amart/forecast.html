@@ -1,8 +1,81 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <title>Crop Production Forecasting</title>
+    <style>
+        /* Styles précédents */
+        /* Ajoutez ici les styles précédents pour le corps de la page, les titres, les paragraphes, etc. */
+        /* Vous pouvez copier-coller les styles précédents ici */
+    </style>
+</head>
+
+<body class="bg-warning">
+    <div class="container-fluid login-form">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 mx-auto bg-white" id="LoginForm">
+                <h5 class="text-center text-info mb-3">Crop Production Forecasting Model</h5>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">District</th>
+                            <th scope="col">Crop</th>
+                            <th scope="col">Season</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Yield</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ district }}</td>
+                            <td>{{ crop }}</td>
+                            <td>{{ season }}</td>
+                            <td>{{ area }}</td>
+                            <td>{{ yield1 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <p class="font-20 text-info h3">The total Production of the given input is with : </p>
+                    <p class="text-danger text-center m-3 h5">Linear Regression :
+                        {% if result %}
+                        {{ result }}
+                        {% endif %}
+                    </p>
+                </div>
+                <form class="bg-white mt-3 d-flex justify-content-center" method="post" >
+                    
+
+                    <input class="btn m-2 login-btn" value='Print Results' type='button' onclick='handlePrint()' />
+                    <script type="text/javascript">
+                        const handlePrint = () => {
+                            var actContents = document.body.innerHTML;
+                            document.body.innerHTML = actContents;
+                            window.print();
+                        }
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <!-- bootstrap js  -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </footer>
+</body>
+
+</html>
+ {% endcomment %}
 
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -87,15 +160,15 @@
     <div class="container-fluid login-form">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6 mx-auto bg-white" id="LoginForm">
-                <h5 class="text-center text-info mb-3">Modèle de prévision de la production agricole</h5>
-                {% comment %} <table class="table table-hover">
+                <h5 class="text-center text-info mb-3">Crop Production Forecasting Model</h5>
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Wilaya</th>
-                            <th scope="col">le grain</th>
-                            <th scope="col">la saison</th>
-                            <th scope="col">la zone</th>
-                            <th scope="col">Quantité cultivée</th>
+                            <th scope="col">District</th>
+                            <th scope="col">Crop</th>
+                            <th scope="col">Season</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Yield</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,9 +180,9 @@
                             <td>{{ yield1 }}</td>
                         </tr>
                     </tbody>
-                </table> {% endcomment %}
+                </table>
                 <div class="text-center">
-                    <p class="font-20 text-info h3">La production totale est  : </p>
+                    <p class="font-20 text-info h3">The total Production of the given input is with : </p>
                     <p class="text-danger text-center m-3 h5">Linear Regression :
                         {% if result %}
                         {{ result }}
@@ -131,6 +204,7 @@
         </div>
     </div>
     <footer>
+        <!-- bootstrap js  -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
@@ -138,5 +212,3 @@
 </body>
 
 </html>
-
-{% endblock content %}
